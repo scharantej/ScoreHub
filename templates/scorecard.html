@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Scorecard</title>
+</head>
+<body>
+<h1>Scorecard</h1>
+<table>
+<thead>
+<tr>
+<th>Team</th>
+<th>Total Runs</th>
+<th>Total Wickets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>{{ team.name }}</td>
+<td>{{ team.total_runs }}</td>
+<td>{{ team.total_wickets }}</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Add Entry</h2>
+<form action="{{ url_for('add_entry') }}" method="POST">
+<input type="hidden" name="team_id" value="{{ team.id }}">
+<label for="runs">Runs:</label>
+<input type="number" name="runs" id="runs">
+<label for="wickets">Wickets:</label>
+<input type="number" name="wickets" id="wickets">
+<label for="player_name">Player Name:</label>
+<input type="text" name="player_name" id="player_name">
+<input type="submit" value="Add Entry">
+</form>
+
+<h2>Update Score</h2>
+<form action="{{ url_for('update_score') }}" method="POST">
+<input type="hidden" name="team_id" value="{{ team.id }}">
+<label for="total_runs">Total Runs:</label>
+<input type="number" name="total_runs" id="total_runs">
+<label for="total_wickets">Total Wickets:</label>
+<input type="number" name="total_wickets" id="total_wickets">
+<input type="submit" value="Update Score">
+</form>
+
+<h2>Delete Entry</h2>
+<form action="{{ url_for('delete_entry') }}" method="POST">
+<input type="hidden" name="team_id" value="{{ team.id }}">
+<label for="entry_id">Entry ID:</label>
+<input type="number" name="entry_id" id="entry_id">
+<input type="submit" value="Delete Entry">
+</form>
+</body>
+</html>
+
